@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<string xmlns="http://malloy.com/">
+  <?xml version="1.0" encoding="UTF-8"?>
+  <OrderConfirmation Version="1.0">
+    <ValidXML>true</ValidXML>
+    <BatchNumber>21</BatchNumber>
+    <CustomerID>851</CustomerID>
+    <FulfillmentOrder>
+      <OrderItemDetail>
+        <LineNumber>1</LineNumber>
+        <LineAccepted>true</LineAccepted>
+        <DetailErrorDescription></DetailErrorDescription>
+      </OrderItemDetail>
+      <OrderItemDetail>
+        <LineNumber>2</LineNumber>
+        <LineAccepted>true</LineAccepted>
+        <DetailErrorDescription></DetailErrorDescription>
+      </OrderItemDetail>
+      <OrderAccepted>true</OrderAccepted>
+      <OrderErrorDescription></OrderErrorDescription>
+      <OrderNumber>244</OrderNumber>
+    </FulfillmentOrder>
+  </OrderConfirmation>
+</string>

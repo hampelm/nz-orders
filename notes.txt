@@ -1,0 +1,11 @@
+"If shipping any method other than prepaid, The BillToAddress area is required and BillMethod is required.  Options for BillMethod are "Collect" and "Bill Third Party".  (BillThirdPartyAccountNo  and Bill Third Party address info is required for every method other than FedEx Collect)."
+
+
+We'll need the Malloy ItemID for every item from shopify somehow.
+"Assigned by Malloy (usually last 4 ISBN)"
+
+
+Will there be international orders?
+
+*U11 (UPS Ground) is our default ship method. -- will we have to deal with
+any shipping options? They're listed in the Freight tab of XML_Packet_For_Customers

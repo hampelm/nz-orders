@@ -1,0 +1,44 @@
+<OrderBatch Version="1.0">
+  <CustNo>1234</CustNo>
+  <FulfillmentOrder OrderNumber="Ab-1245"><!-- Unique Order Number assigned by publisher -->
+    <PONum>asi145</PONum><!-- optional -->
+    <FreightCode>U11</FreightCode>
+
+    <ShipToAddress>
+      <CompanyName>Barnes &amp; Noble Bookstore#1233</CompanyName>
+      <Attention>RALPH GREEN</Attention>
+      <Line1>123 MAIN STREET</Line1>
+      <Line2>another address line</Line2>
+      <Line3>another address line</Line3>
+      <City>MIAMI</City>
+      <StateProvinceCode>FL</StateProvinceCode>
+      <PostalZipCode>33150</PostalZipCode>
+      <Email>Ralph2233@aol.com</Email>
+      <CommercialResidentailFlag>R</CommercialResidentailFlag> <!-- defaults to R -->
+      <Domestic>
+        <Phone>973-555-5555</Phone>
+      </Domestic>
+      <!-- or without phone number: -->
+      <Domestic />
+    </ShipToAddress>
+
+    <BillToAddress>
+      ... see notes -- do we need this? ...
+    </BillToAddress>
+
+    <FulfillmentOrderItemDetail>
+      <LineNumber>1</LineNumber>
+      <ItemID>12XY</ItemID>  <!--Assigned by Malloy (usually last 4 ISBN) -->
+      <OrderQuantity>2</OrderQuantity>
+    </FulfillmentOrderItemDetail>
+
+    <FulfillmentOrderItemDetail>
+      <LineNumber>2</LineNumber>
+      <ItemID>9999</ItemID>
+      <OrderQuantity>1</OrderQuantity>
+    </FulfillmentOrderItemDetail>
+
+  </FulfillmentOrder>
+
+  <TestOrderFlag>1</TestOrderFlag>
+</OrderBatch>
