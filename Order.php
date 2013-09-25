@@ -2,6 +2,12 @@
 
 include 'Item.php';
 
+/**
+ * A generic structure for Orders.
+ * Also, tools for exporting Orders and their Items as XML
+ * that the fulfilment service can handle.
+ *
+ */
 class Order {
    private $debug = TRUE;
 
