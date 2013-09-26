@@ -21,33 +21,39 @@ class Shopify {
    * Creates an order from POSTed JSON
    * @param Array $json
    */
-  public function createOrder($json) {
-    $data = json_decode($json, true);
-    $order = new Order;
+  public function createOrder($data) {
+    $this->order = new Order;
 
-    print_r($data);
-    print_r($order);
+    // Parse the shipping data
+    $empty = '';
+    $address = $data->shipping_address;
+    $order->addr1 = ($address->address1 ? $address->address1 : $empty);
+    $order->addr2 = ($address->address2 ? $address->address2 : $empty);
+    $order->city = ($address->city ? $address->city : $empty);
+    $order->state = ($address->province ? $address->province : $empty);
+    $order->zip = ($address->zip ? $address->zip : $empty);
+    $order->phone = ($address->phone ? $address->phone : $empty);
+
+    // Parse the items
+    $items = $data->line_items;
+    $i = 1;
+    foreach ($items as &$item) {
+      $lineNumber = $i;
+      $itemId = $item->sku;
+      $quantity = $item->quantity;
+      $this->order->addItem($lineNumber, $itemId, $quantity);
+      $i +=1;
+    }
+
   }
 
 
   /**
    * Ships an order off to the fulfillment system
    */
-  public function shipOrder() {
-    $xml = $order->writeXML();
-
-    // $ch = curl_init('http://requestb.in/1dsa59w1');
-    // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml'));
-    // curl_setopt($ch, CURLOPT_HEADER, 0);
-    // curl_setopt($ch, CURLOPT_POST, 1);
-    // curl_setopt($ch, CURLOPT_POSTFIELDS, $xml_builder);
-    // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
-    // curl_setopt($ch, CURLOPT_REFERER, 'http://neutral-zone.org');
-    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    // $ch_result = curl_exec($ch);
-    // curl_close($ch);
-    // // Print CURL result.
-    // echo $ch_result;
+  public function shipOrder($endpoint) {
+    // print_r($this->order);
+    $this->order->ship($endpoint);
   }
 }
 

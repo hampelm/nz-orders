@@ -3,17 +3,10 @@
 include 'Shopify.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-   $shopify = new Shopify;
-   $shopify->createOrder($_POST);
-   $shopify->shipOrder();
+  $data = json_decode(file_get_contents('php://input'));
+  $shopify = new Shopify;
+  $shopify->createOrder($data);
+  $shopify->shipOrder('http://requestb.in/1dsa59w1');
 }
-
-// Create some test items
-// $order = new Order;
-// $item1 = new Item;
-// $item2 = new Item;
-// $items = Array($item1, $item2);
-// $order->items = $items;
-// $order->writeXML();
 
 ?>
