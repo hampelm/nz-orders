@@ -65,25 +65,25 @@ class Order {
    public function ship($url) {
       $xml = $this->generateXML();
 
-      $post_data = array('xml' => $xml);
-      $stream_options = array(
-          'http' => array(
-              'method'  => 'POST',
-              'header'  => 'Content-type: application/x-www-form-urlencoded' . "\r\n",
-              'content' =>  http_build_query($post_data)));
+      // We send XML via CURL using POST with a http header of text/xml.
+      $ch = curl_init();
 
-      $context  = stream_context_create($stream_options);
-      $response = file_get_contents($url, null, $context);
-      print_r($response);
+      // set URL and other appropriate options
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml'));
+      curl_setopt($ch, CURLOPT_HEADER, 0);
+      curl_setopt($ch, CURLOPT_POST, 1);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
+      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
+      curl_setopt($ch, CURLOPT_REFERER, 'http://requestb.in/1dsa59w1');
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // return the result on
+                                                   // success, FALSE on failure
+      $ch_result = curl_exec($ch);
 
+      // Print CURL result.
+      echo $ch_result;
 
-      // $ch = curl_init();
-      // curl_setopt($ch, CURLOPT_HEADER, 0);
-      // curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-      // curl_setopt($ch, CURLOPT_URL, $endpoint);
-      // curl_setopt($ch, CURLOPT_POST, 1);
-      // curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
-      // $content=curl_exec($ch);
+      curl_close($ch);
    }
 
 }
