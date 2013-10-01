@@ -10,6 +10,7 @@ include 'Item.php';
  */
 class Order {
    private $debug = TRUE;
+   private $CUSTNO = 8820;
 
    public $addr1;
    public $addr2;
@@ -34,6 +35,8 @@ class Order {
       $writer->setIndent(4);
       $writer->startElement('OrderBatch');
          $writer->writeAttribute('Version', '1.0');
+         $writer->writeElement('CustNo', $CUSTNO);
+
          $writer->startElement('FulfillmentOrder');
             $writer->writeElement('Line1', $this->addr1);
             $writer->writeElement('Line2', $this->addr2);
