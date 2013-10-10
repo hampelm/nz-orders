@@ -10,8 +10,12 @@ include 'Shopify.php';
   * http://requestb.in/1dsa59w1
   */
 
-// $URL = 'http://requestb.in/1dsa59w1';
-$URL = 'https://www.malloyfulfillmentsolutions.com/TransmitOrders/FulfillmentOrderBatch.asmx?WSDL';
+// Testing URL:
+$URL = 'http://requestb.in/'; // You will need to create a new bin at
+                              // http://requestb.in for testing
+
+// Official Malloy URL:
+// $URL = 'https://www.malloyfulfillmentsolutions.com/TransmitOrders/FulfillmentOrderBatch.asmx?WSDL';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $data = json_decode(file_get_contents('php://input'));

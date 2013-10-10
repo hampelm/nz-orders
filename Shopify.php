@@ -22,17 +22,21 @@ class Shopify {
    * @param Array $json
    */
   public function createOrder($data) {
-    $this->order = new Order;
 
     // Parse the shipping data
     $empty = '';
     $address = $data->shipping_address;
+    print_r($address);
+
+    $order = new Order;
+    $order->name = ($address->name ? $address->name : $empty);
     $order->addr1 = ($address->address1 ? $address->address1 : $empty);
     $order->addr2 = ($address->address2 ? $address->address2 : $empty);
     $order->city = ($address->city ? $address->city : $empty);
     $order->state = ($address->province ? $address->province : $empty);
     $order->zip = ($address->zip ? $address->zip : $empty);
     $order->phone = ($address->phone ? $address->phone : $empty);
+    $this->order = $order;
 
     // Parse the items
     $items = $data->line_items;
