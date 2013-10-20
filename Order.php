@@ -39,22 +39,26 @@ class Order {
          $writer->writeElement('CustNo', $this->CUSTNO);
 
          $writer->startElement('FulfillmentOrder');
-            $writer->writeElement('Attention', $this->name);
-            $writer->writeElement('Line1', $this->addr1);
-            $writer->writeElement('Line2', $this->addr2);
-            $writer->writeElement('City', $this->city);
-            $writer->writeElement('StateProvidenceCode', $this->state);
-            $writer->writeElement('PostalZipCode', $this->zip);
+            $writer->writeElement('FreightCode', 'U11');
+
+            $writer->startElement('ShipToAddress');
+               $writer->writeElement('Attention', $this->name);
+               $writer->writeElement('Line1', $this->addr1);
+               $writer->writeElement('Line2', $this->addr2);
+               $writer->writeElement('City', $this->city);
+               $writer->writeElement('StateProvinceCode', $this->state);
+               $writer->writeElement('PostalZipCode', $this->zip);
+               $writer->writeElement('Domestic');
+            $writer->endElement(); // end ShipToAddress
 
             foreach ($this->items as &$item) {
                $writer->startElement('FulfillmentOrderItemDetail');
-                  $writer->writeElement('LineItem', $item->lineNumber);
+                  $writer->writeElement('LineNumber', $item->lineNumber);
                   $writer->writeElement('ItemID', $item->itemId);
                   $writer->writeElement('OrderQuantity', $item->quantity);
                $writer->endElement();
             }
-
-         $writer->endElement();
+         $writer->endElement(); // End FulfillmentOrder
 
          if ($this->debug) {
             $writer->writeElement('TestOrderFlag', '1');
@@ -85,7 +89,7 @@ class Order {
       $ch_result = curl_exec($ch);
 
       // Print CURL result.
-      echo $ch_result;
+      // echo $ch_result;
 
       curl_close($ch);
    }
