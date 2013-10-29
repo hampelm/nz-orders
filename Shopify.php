@@ -29,7 +29,7 @@ class Shopify {
     print_r($address);
 
     $order = new Order;
-    $order->orderNumber = $data->id;
+    $order->orderNumber = $data->order_number;
     $order->name = ($address->name ? $address->name : $empty);
     $order->addr1 = ($address->address1 ? $address->address1 : $empty);
     $order->addr2 = ($address->address2 ? $address->address2 : $empty);
