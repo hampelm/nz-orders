@@ -12,6 +12,7 @@ class Order {
    private $debug = TRUE;
    private $CUSTNO = 8820;
 
+   public $orderNumber; // TODO: set orderNumber somewhere.
    public $name;
    public $addr1;
    public $addr2;
@@ -39,6 +40,7 @@ class Order {
          $writer->writeElement('CustNo', $this->CUSTNO);
 
          $writer->startElement('FulfillmentOrder');
+            $writer->writeAttribute('OrderNumber', $this->orderNumber); 
             $writer->writeElement('FreightCode', 'U11');
 
             $writer->startElement('ShipToAddress');
