@@ -12,7 +12,7 @@ class Order {
    private $debug = TRUE;
    private $CUSTNO = 8820;
 
-   public $orderNumber; // TODO: set orderNumber somewhere.
+   public $orderNumber; // we use the shopify order id here.
    public $name;
    public $addr1;
    public $addr2;
