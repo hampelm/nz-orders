@@ -33,7 +33,7 @@ class Shopify {
     $order->addr1 = ($address->address1 ? $address->address1 : $empty);
     $order->addr2 = ($address->address2 ? $address->address2 : $empty);
     $order->city = ($address->city ? $address->city : $empty);
-    $order->state = ($address->province ? $address->province : $empty);
+    $order->state = ($address->province_code ? $address->province_code : $empty);
     $order->zip = ($address->zip ? $address->zip : $empty);
     $order->phone = ($address->phone ? $address->phone : $empty);
     $this->order = $order;
