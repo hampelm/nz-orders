@@ -15,7 +15,7 @@ $URL = 'http://requestb.in/1i2gbnj1'; // You will need to create a new bin at
                               // http://requestb.in for testing
 
 // Official Malloy URL:
-$URL = 'https://www.malloyfulfillmentsolutions.com/TransmitOrders/FulfillmentOrderBatch.asmx?WSDL';
+$URL = 'https://fulfillment.edwardsbrothersmalloy.com/TransmitOrders/FulfillmentOrderBatch.asmx';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $data = json_decode(file_get_contents('php://input'));
